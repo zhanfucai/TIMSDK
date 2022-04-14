@@ -104,6 +104,7 @@
         if (self.isAudioCall || self.isVideoCall) {
             NSTextAttachment *attchment = [[NSTextAttachment alloc] init];
             UIImage *image = nil;
+            /*
             if (self.isAudioCall) {
                 image = [UIImage d_imagePath:TUIChatImagePath(@"audio_call")];
             }
@@ -113,7 +114,26 @@
                 } else {
                     image = [UIImage d_imagePath:TUIChatImagePath(@"video_call")];
                 }
+            }*/
+            //zfc新增
+            if (self.isAudioCall) {
+                if (self.innerMessage.isSelf) {
+//                    image = [UIImage d_imagePath:TUIChatImagePath(@"audio_call")];
+                    image = [UIImage imageNamed:@"chat_phone_white"];
+                } else {
+                    image = [UIImage imageNamed:@"chat_phone_black"];
+                }
             }
+            if (self.isVideoCall) {
+                if (self.innerMessage.isSelf) {
+                    image = [UIImage imageNamed:@"chat_video_white"];
+//                    image = [UIImage d_imagePath:TUIChatImagePath(@"video_call_self")];
+                } else {
+                    image = [UIImage imageNamed:@"chat_video_black"];
+//                    image = [UIImage d_imagePath:TUIChatImagePath(@"video_call")];
+                }
+            }
+            
             attchment.image = image;
             attchment.bounds = CGRectMake(0, -(self.textFont.lineHeight-self.textFont.pointSize)/2, self.textFont.pointSize, self.textFont.pointSize);
             NSAttributedString *imageString = [NSAttributedString attributedStringWithAttachment:(NSTextAttachment *)(attchment)];

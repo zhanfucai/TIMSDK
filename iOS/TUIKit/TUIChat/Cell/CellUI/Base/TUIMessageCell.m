@@ -257,6 +257,11 @@
         self.retryView.frame = self.indicator.frame;
         self.readReceiptLabel.hidden = YES;
         
+        //zfc新增
+        self.avatarView.mm_bottom(self.contentView.mm_b);
+        self.nameLabel.mm_bottom(self.contentView.mm_b);
+        self.container.mm_bottom(self.nameLabel.mm_y);
+        self.container.mm_top(self.contentView.mm_x);
     } else {
         
         self.avatarView.mm_w = cellLayout.avatarSize.width;
@@ -276,6 +281,14 @@
         //这里不能像 retryView 一样直接使用 indicator 的设定，否则内容会显示不全。
         self.readReceiptLabel.mm_sizeToFit().mm_bottom(self.container.mm_b + cellLayout.bubbleInsets.bottom).mm_left(_container.mm_x - 8 - _readReceiptLabel.mm_w);
         
+        //zfc新增
+        _nameLabel.hidden = YES;
+        _nameLabel.mm_height(0);
+        self.avatarView.mm_centerY = self.contentView.mm_centerY;
+//        self.avatarView.mm_centerY(self.contentView);
+//        self.container.mm_centerY = self.contentView.mm_centerY;
+        self.container.mm_bottom(self.contentView.mm_b);
+        self.container.mm_top(self.contentView.mm_x);
     }
 }
 

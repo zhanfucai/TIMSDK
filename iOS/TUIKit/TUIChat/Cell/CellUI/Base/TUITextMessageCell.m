@@ -40,7 +40,14 @@
     self.selectContent = data.content;
     self.textView.attributedText = data.attributedString;
     self.textView.textColor = data.textColor;
-    self.textView.font = data.textFont;
+//    self.textView.font = data.textFont;
+    
+    //zfc新增
+    if (data.direction == MsgDirectionIncoming) {
+        self.textView.textColor = [UIColor colorWithRed:68/255.0 green:68/255.0 blue:68/255.0 alpha:1.0];
+    } else {
+        self.textView.textColor = [UIColor whiteColor];
+    }
 }
 
 //- (void)highlightWhenMatchKeyword:(NSString *)keyword
